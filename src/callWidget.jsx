@@ -84,26 +84,26 @@ function WebCallComponent({ onAgentTalking, agentTalking }) {
   };
 
   return (
-    <div className="call-panel">
+    <div className="aiw-call-panel">
       {/* Breathing / Pulsing ball */}
-      <div className={`talk-ball ${agentTalking ? "active" : "idle"}`}>
-        <div className="layer layer-1"></div>
-        <div className="layer layer-2"></div>
-        <div className="layer layer-3"></div>
-        <div className="layer layer-4"></div>
-        <div className="layer layer-5"></div>
+      <div className={`aiw-talk-ball ${agentTalking ? "active" : "idle"}`}>
+        <div className="aiw-layer aiw-layer-1"></div>
+        <div className="aiw-layer aiw-layer-2"></div>
+        <div className="aiw-layer aiw-layer-3"></div>
+        <div className="aiw-layer aiw-layer-4"></div>
+        <div className="aiw-layer aiw-layer-5"></div>
       </div>
 
       {/* Call button */}
-      <div className="call-actions">
+      <div className="aiw-call-actions">
         {!callActive ? (
           <button
-            className="icon-btn start-btn"
+            className="aiw-icon-btn aiw-start-btn"
             onClick={startWebCall}
             disabled={connecting}
           >
             {connecting ? (
-              <span className="loader"></span>
+              <span className="aiw-loader"></span>
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ function WebCallComponent({ onAgentTalking, agentTalking }) {
             )}
           </button>
         ) : (
-          <button className="icon-btn end-btn" onClick={stopWebCall}>
+          <button className="aiw-icon-btn aiw-end-btn" onClick={stopWebCall}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="26"
@@ -177,7 +177,7 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
       <div style={positionStyles}>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="floating-btn"
+          className="aiw-floating-btn"
           aria-label="Toggle AI Assistant"
           style={{ backgroundColor: color }}
         >
