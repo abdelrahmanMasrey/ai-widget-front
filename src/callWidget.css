@@ -50,6 +50,7 @@
 }
 
 .aiw-layer {
+  display: inline;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -59,22 +60,23 @@
   opacity: 0.6;
 }
 
-.aiw-layer-1 { width: 180px; height: 180px; }
-.aiw-layer-2 { width: 160px; height: 160px; }
-.aiw-layer-3 { width: 140px; height: 140px; }
-.aiw-layer-4 { width: 120px; height: 120px; }
-.aiw-layer-5 { width: 100px; height: 100px; }
+.aiw-layer-1 {   display: inline; width: 180px; height: 180px; }
+.aiw-layer-2 {   display: inline; width: 160px; height: 160px; }
+.aiw-layer-3 {   display: inline; width: 140px; height: 140px; }
+.aiw-layer-4 {   display: inline; width: 120px; height: 120px; }
+.aiw-layer-5 {   display: inline; width: 100px; height: 100px; }
 
 .aiw-talk-ball.active .aiw-layer {
+  display: inline;
   opacity: 0.7;
   animation: aiw-pulse-layer 1.2s infinite ease-in-out;
 }
 
-.aiw-talk-ball.active .aiw-layer-1 { animation-delay: 0s; }
-.aiw-talk-ball.active .aiw-layer-2 { animation-delay: 0.2s; }
-.aiw-talk-ball.active .aiw-layer-3 { animation-delay: 0.4s; }
-.aiw-talk-ball.active .aiw-layer-4 { animation-delay: 0.6s; }
-.aiw-talk-ball.active .aiw-layer-5 { animation-delay: 0.8s; }
+.aiw-talk-ball.active .aiw-layer-1 {  display: inline; animation-delay: 0s; }
+.aiw-talk-ball.active .aiw-layer-2 {  display: inline; animation-delay: 0.2s; }
+.aiw-talk-ball.active .aiw-layer-3 {  display: inline; animation-delay: 0.4s; }
+.aiw-talk-ball.active .aiw-layer-4 {  display: inline; animation-delay: 0.6s; }
+.aiw-talk-ball.active .aiw-layer-5 {  display: inline; animation-delay: 0.8s; }
 
 @keyframes aiw-pulse-layer {
   0%, 100% {
