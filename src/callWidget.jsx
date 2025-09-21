@@ -1,8 +1,22 @@
-// src/callwidget.jsx
 import React, { useEffect, useState } from "react";
 import { RetellWebClient } from "retell-client-js-sdk";
-import "./callWidget.css"; 
+import "./callWidget.css";
 
+/* ===========================
+   Siri Orb Visualization
+   =========================== */
+function SiriOrb({ agentTalking }) {
+  return (
+    <div
+      className={`siri-orb ${agentTalking ? "aiw-speaking" : ""}`}
+      style={{ "--animation-duration": "20s" }} // keeps constant rotation
+    ></div>
+  );
+}
+
+/* ===========================
+   Web Call Component
+   =========================== */
 function WebCallComponent({ onAgentTalking, agentTalking }) {
   const [retellClient, setRetellClient] = useState(null);
   const [callActive, setCallActive] = useState(false);
@@ -85,16 +99,10 @@ function WebCallComponent({ onAgentTalking, agentTalking }) {
 
   return (
     <div className="aiw-call-panel">
-      {/* Breathing / Pulsing ball */}
-      <div className={`aiw-talk-ball ${agentTalking ? "active" : "idle"}`}>
-        <div className="aiw-layer aiw-layer-1"></div>
-        <div className="aiw-layer aiw-layer-2"></div>
-        <div className="aiw-layer aiw-layer-3"></div>
-        <div className="aiw-layer aiw-layer-4"></div>
-        <div className="aiw-layer aiw-layer-5"></div>
-      </div>
+      {/* Siri Orb */}
+      <SiriOrb agentTalking={agentTalking} />
 
-      {/* Call button */}
+      {/* Call buttons */}
       <div className="aiw-call-actions">
         {!callActive ? (
           <button
@@ -141,11 +149,15 @@ function WebCallComponent({ onAgentTalking, agentTalking }) {
   );
 }
 
+/* ===========================
+   AI Call Widget (main export)
+   =========================== */
 function AICallWidget({ position = "bottom-right", agentId, color, text }) {
   const [isOpen, setIsOpen] = useState(false);
   const [agentTalking, setAgentTalking] = useState(false);
 
   const isLeft = position.includes("left");
+
   const positionStyles = {
     position: "fixed",
     bottom: "24px",
@@ -173,7 +185,7 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
 
   return (
     <>
-      {/* Floating button */}
+      {/* Floating toggle button */}
       <div style={positionStyles}>
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -185,10 +197,11 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
         </button>
       </div>
 
-      {/* Sliding Panel */}
+      {/* Sliding panel */}
       <div style={panelStyles}>
-        {/* Optional text */}
-        {text && <div style={{ marginBottom: "16px", fontWeight: "bold" }}>{text}</div>}
+        {text && (
+          <div style={{ marginBottom: "16px", fontWeight: "bold" }}>{text}</div>
+        )}
 
         <WebCallComponent
           onAgentTalking={setAgentTalking}
@@ -201,6 +214,16 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
   );
 }
 
+/* ===========================
+   Export
+   =========================== */
 export default function CallWidget({ position, agentId, color, text }) {
-  return <AICallWidget position={position} agentId={agentId} color={color} text={text} />;
+  return (
+    <AICallWidget
+      position={position}
+      agentId={agentId}
+      color={color}
+      text={text}
+    />
+  );
 }

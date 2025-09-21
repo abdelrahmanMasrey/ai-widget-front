@@ -1,3 +1,6 @@
+/* ===========================
+   Loader Spinner
+   =========================== */
 .aiw-loader {
   width: 20px;
   height: 20px;
@@ -17,6 +20,9 @@
   cursor: not-allowed;
 }
 
+/* ===========================
+   Floating Button
+   =========================== */
 .aiw-floating-btn {
   width: 64px;
   height: 64px;
@@ -29,6 +35,9 @@
   box-shadow: 0 8px 32px rgba(202, 37, 174, 0.4);
 }
 
+/* ===========================
+   Call Panel
+   =========================== */
 .aiw-call-panel {
   display: flex;
   flex-direction: column;
@@ -39,62 +48,96 @@
   width: 100%;
 }
 
-
-.aiw-talk-ball {
-  position: relative !important;
-  width: 120px !important;
-  height: 120px !important;
-  display: block !important;
-  align-items: center !important;
-  justify-content: center !important;
-  animation: aiw-hover 4s ease-in-out infinite !important;
+/* ===========================
+   Siri Orb
+   =========================== */
+/* === Siri Orb Base === */
+.siri-orb {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: grid;
+  grid-template-areas: "stack";
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0.03) 30%,
+    transparent 70%
+  );
 }
 
-.aiw-layer {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  border-radius: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  background: var(--aiw-color, #ca25ae) !important;
-  opacity: 0.6 !important;
-  display: block !important;
+/* Light theme fix */
+.dark .siri-orb {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 30%,
+    transparent 70%
+  );
 }
 
-.aiw-layer-1 {  display: block !important; width: 180px; height: 180px; }
-.aiw-layer-2 {  display: block !important; width: 160px; height: 160px; }
-.aiw-layer-3 {  display: block !important; width: 140px; height: 140px; }
-.aiw-layer-4 {  display: block !important; width: 120px; height: 120px; }
-.aiw-layer-5 {  display: block !important; width: 100px; height: 100px; }
-
-.aiw-talk-ball.active .aiw-layer {
-  display: block !important;
-  opacity: 0.7;
-  animation: aiw-pulse-layer 1.2s infinite ease-in-out;
+/* Orb glow layer */
+.siri-orb::before {
+  content: "";
+  grid-area: stack;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background:
+    conic-gradient(from 0deg at 30% 65%, oklch(78% 0.14 280), transparent 45deg 315deg, oklch(78% 0.14 280) 360deg),
+    conic-gradient(from 0deg at 70% 35%, oklch(80% 0.12 200), transparent 60deg 300deg, oklch(80% 0.12 200) 360deg),
+    conic-gradient(from 0deg at 65% 75%, oklch(75% 0.15 350), transparent 90deg 270deg, oklch(75% 0.15 350) 360deg),
+    conic-gradient(from 0deg at 25% 25%, oklch(80% 0.12 200), transparent 30deg 330deg, oklch(80% 0.12 200) 360deg),
+    conic-gradient(from 0deg at 80% 80%, oklch(75% 0.15 350), transparent 45deg 315deg, oklch(75% 0.15 350) 360deg),
+    radial-gradient(ellipse 120% 80% at 40% 60%, oklch(78% 0.14 280), transparent 50%);
+  filter: blur(12px) contrast(1.2) saturate(1);
+  opacity: 0.6; /* idle visibility */
+  animation: rotate var(--animation-duration, 20s) linear infinite;
+  transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
-.aiw-talk-ball.active .aiw-layer-1 { display: block !important; animation-delay: 0s; }
-.aiw-talk-ball.active .aiw-layer-2 { display: block !important; animation-delay: 0.2s; }
-.aiw-talk-ball.active .aiw-layer-3 { display: block !important; animation-delay: 0.4s; }
-.aiw-talk-ball.active .aiw-layer-4 { display: block !important; animation-delay: 0.6s; }
-.aiw-talk-ball.active .aiw-layer-5 { display: block !important; animation-delay: 0.8s; }
-
-@keyframes aiw-pulse-layer {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.1);
-    opacity: 1;
-  }
+/* Overlay highlight */
+.siri-orb::after {
+  content: "";
+  grid-area: stack;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 45% 55%,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05) 30%,
+    transparent 60%
+  );
+  mix-blend-mode: overlay;
 }
 
-@keyframes aiw-hover {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+/* Speaking state — bright + pulsing */
+.siri-orb.aiw-speaking::before {
+  opacity: 1;
+  filter: blur(12px) contrast(1.8) saturate(1.6);
 }
 
+.siri-orb.aiw-speaking {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+
+/* ===========================
+   Call Buttons
+   =========================== */
 .aiw-icon-btn {
   width: 40px;
   height: 30px;
