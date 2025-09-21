@@ -1,0 +1,158 @@
+/* src/callwidget.css*/
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.floating-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  background: #ca25ae;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(202, 37, 174, 0.4);
+}
+
+.call-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  height: 100%;
+  width: 100%;
+}
+
+.talk-ball {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: hover 4s ease-in-out infinite;
+}
+
+.layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #ca25ae;
+  opacity: 0.6;
+}
+
+.layer-1 {
+  width: 180px;
+  height: 180px;
+}
+.layer-2 {
+  width: 160px;
+  height: 160px;
+}
+.layer-3 {
+  width: 140px;
+  height: 140px;
+}
+.layer-4 {
+  width: 120px;
+  height: 120px;
+}
+.layer-5 {
+  width: 100px;
+  height: 100px;
+}
+
+.talk-ball.active .layer {
+  opacity: 0.7;
+  animation: pulse-layer 1.2s infinite ease-in-out;
+}
+
+.talk-ball.active .layer-1 {
+  animation-delay: 0s;
+}
+.talk-ball.active .layer-2 {
+  animation-delay: 0.2s;
+}
+.talk-ball.active .layer-3 {
+  animation-delay: 0.4s;
+}
+.talk-ball.active .layer-4 {
+  animation-delay: 0.6s;
+}
+.talk-ball.active .layer-5 {
+  animation-delay: 0.8s;
+}
+
+@keyframes pulse-layer {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes hover {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.icon-btn {
+  width: 40px;
+  height: 30px;
+  border-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.start-btn {
+  background: #ca25ae;
+  color: white;
+  box-shadow: 0 6px 18px rgba(202, 37, 174, 0.4);
+}
+
+.end-btn {
+  background: #ca25ae;
+  color: white;
+  box-shadow: 0 6px 18px rgba(202, 37, 174, 0.4);
+}
+
+.icon-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}

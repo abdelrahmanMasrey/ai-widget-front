@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Widget Test</title>
+    <link rel="stylesheet" href="./widget/index.css" />
+  </head>
+  <body>
+    <h1>Testing the AI Voice Widget</h1>
+
+    <!-- Root for your widget -->
+    <ai-voice-widget-root></ai-voice-widget-root>
+
+    <!-- Load the bundled widget -->
+    <script src="./widget/index.js"></script>
+    <script>
+      // Mount widget after script loads
+      const root = document.querySelector("ai-voice-widget-root");
+      if (window.CallWidget && root) {
+        const { createRoot } = ReactDOM;
+        createRoot(root).render(
+          React.createElement(CallWidget, { position: "bottom-right" })
+        );
+      }
+    </script>
+  </body>
+</html>
