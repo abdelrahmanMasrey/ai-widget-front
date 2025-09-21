@@ -18,14 +18,15 @@
 }
 
 .aiw-floating-btn {
-  width: 64px !important;
-  height: 64px !important;
-  border-radius: 50% !important;
-  background: var(--aiw-color, #ca25ae) !important;
-  color: white !important;
-  font-size: 28px !important;
-  cursor: pointer !important;
-  box-shadow: 0 8px 32px rgba(202, 37, 174, 0.4) !important;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  background: #ca25ae;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(202, 37, 174, 0.4);
 }
 
 .aiw-call-panel {
@@ -38,11 +39,12 @@
   width: 100%;
 }
 
+
 .aiw-talk-ball {
   position: relative !important;
   width: 120px !important;
   height: 120px !important;
-  display: flex !important;
+  display: block !important;
   align-items: center !important;
   justify-content: center !important;
   animation: aiw-hover 4s ease-in-out infinite !important;
@@ -56,24 +58,26 @@
   transform: translate(-50%, -50%) !important;
   background: var(--aiw-color, #ca25ae) !important;
   opacity: 0.6 !important;
+  display: block !important;
 }
 
-.aiw-layer-1 { width: 180px; height: 180px; }
-.aiw-layer-2 { width: 160px; height: 160px; }
-.aiw-layer-3 { width: 140px; height: 140px; }
-.aiw-layer-4 { width: 120px; height: 120px; }
-.aiw-layer-5 { width: 100px; height: 100px; }
+.aiw-layer-1 {  display: block !important; width: 180px; height: 180px; }
+.aiw-layer-2 {  display: block !important; width: 160px; height: 160px; }
+.aiw-layer-3 {  display: block !important; width: 140px; height: 140px; }
+.aiw-layer-4 {  display: block !important; width: 120px; height: 120px; }
+.aiw-layer-5 {  display: block !important; width: 100px; height: 100px; }
 
 .aiw-talk-ball.active .aiw-layer {
+  display: block !important;
   opacity: 0.7;
   animation: aiw-pulse-layer 1.2s infinite ease-in-out;
 }
 
-.aiw-talk-ball.active .aiw-layer-1 { animation-delay: 0s; }
-.aiw-talk-ball.active .aiw-layer-2 { animation-delay: 0.2s; }
-.aiw-talk-ball.active .aiw-layer-3 { animation-delay: 0.4s; }
-.aiw-talk-ball.active .aiw-layer-4 { animation-delay: 0.6s; }
-.aiw-talk-ball.active .aiw-layer-5 { animation-delay: 0.8s; }
+.aiw-talk-ball.active .aiw-layer-1 { display: block !important; animation-delay: 0s; }
+.aiw-talk-ball.active .aiw-layer-2 { display: block !important; animation-delay: 0.2s; }
+.aiw-talk-ball.active .aiw-layer-3 { display: block !important; animation-delay: 0.4s; }
+.aiw-talk-ball.active .aiw-layer-4 { display: block !important; animation-delay: 0.6s; }
+.aiw-talk-ball.active .aiw-layer-5 { display: block !important; animation-delay: 0.8s; }
 
 @keyframes aiw-pulse-layer {
   0%, 100% {
@@ -92,14 +96,16 @@
 }
 
 .aiw-icon-btn {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  border: none !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  width: 40px;
+  height: 30px;
+  border-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 
 .aiw-start-btn {
   background: #ca25ae;
