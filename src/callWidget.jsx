@@ -1,7 +1,7 @@
 // src/callwidget.jsx
 import React, { useEffect, useState } from "react";
 import { RetellWebClient } from "retell-client-js-sdk";
-import "./CallWidget.css"; // ✅ import CSS
+import "./callWidget.css"; // ✅ import CSS
 
 function WebCallComponent({ onAgentTalking, agentTalking }) {
   const [retellClient, setRetellClient] = useState(null);
