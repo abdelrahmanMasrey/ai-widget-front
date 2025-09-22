@@ -15,14 +15,9 @@ const shadow = host.attachShadow({ mode: "open" });
 const link = document.createElement("link");
 link.rel = "stylesheet";
 
-// detect environment
-if (process.env.NODE_ENV === "development") {
-  // 👇 local file for dev
-  link.href = "./widget/index.css"; 
-} else {
-  // 👇 CDN file for prod
-  link.href = "https://ai-widget-front.vercel.app/index.css"; 
-}
+link.href =  process.env.WIDGET_CSS_URL; 
+
+console.log(process.env.WIDGET_CSS_URL);
 
 shadow.appendChild(link);
 
