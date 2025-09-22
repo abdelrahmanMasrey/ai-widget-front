@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import CallWidget from "./callwidget";
+import CallWidget from "./callWidget";
 
 // find or create the widget root
 const host =
