@@ -10,11 +10,22 @@ const host =
 // create shadow DOM
 const shadow = host.attachShadow({ mode: "open" });
 
+
 // inject stylesheet into shadow root
 const link = document.createElement("link");
 link.rel = "stylesheet";
-link.href = "https://ai-widget-front.vercel.app/index.css"; // 👈 your CSS file
+
+// detect environment
+if (process.env.NODE_ENV === "development") {
+  // 👇 local file for dev
+  link.href = "./widget/index.css"; 
+} else {
+  // 👇 CDN file for prod
+  link.href = "https://ai-widget-front.vercel.app/index.css"; 
+}
+
 shadow.appendChild(link);
+
 
 // inject dynamic CSS variables
 const color = host.getAttribute("data-color") || "#ca25ae";

@@ -8,8 +8,8 @@ import "./callWidget.css";
 function SiriOrb({ agentTalking }) {
   return (
     <div
-      className={`siri-orb ${agentTalking ? "aiw-speaking" : ""}`}
-      style={{ "--animation-duration": "20s" }} // keeps constant rotation
+      className={`siri-orb ${agentTalking ? "" : "aiw-speaking"}`}
+      style={{ "--animation-duration": "10s" }} // keeps constant rotation
     ></div>
   );
 }
@@ -200,7 +200,7 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
       {/* Sliding panel */}
       <div style={panelStyles}>
         {text && (
-          <div style={{ marginBottom: "16px", fontWeight: "bold" }}>{text}</div>
+          <div style={{ fontFamily: "'Poppins', sans-serif", marginBottom: "8px" }}>{text}</div>
         )}
 
         <WebCallComponent

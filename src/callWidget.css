@@ -94,7 +94,7 @@
     radial-gradient(ellipse 120% 80% at 40% 60%, var(--aiw-color, #ca25ae), transparent 50%);
   filter: blur(12px) contrast(1.2) saturate(1);
   opacity: 0.6; /* idle visibility */
-  animation: rotate var(--animation-duration, 20s) linear infinite;
+  animation: rotate var(--animation-duration, 10s) linear infinite;
   transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
@@ -116,8 +116,8 @@
 
 /* Speaking state — bright + pulsing */
 .siri-orb.aiw-speaking::before {
-  opacity: 1;
-  filter: blur(12px) contrast(1.8) saturate(1.6);
+filter: blur(12px) contrast(1.4) saturate(1.2);
+opacity: 0.85;
 }
 
 .siri-orb.aiw-speaking {
