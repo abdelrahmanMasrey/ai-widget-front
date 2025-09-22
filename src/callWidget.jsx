@@ -8,7 +8,7 @@ import "./callWidget.css";
 function SiriOrb({ agentTalking }) {
   return (
     <div
-      className={`siri-orb ${agentTalking ? "" : "aiw-speaking"}`}
+      className={`siri-orb ${agentTalking ? "aiw-speaking" : ""}`}
       style={{ "--animation-duration": "10s" }} // keeps constant rotation
     ></div>
   );
