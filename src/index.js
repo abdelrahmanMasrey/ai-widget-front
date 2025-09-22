@@ -16,6 +16,12 @@ link.rel = "stylesheet";
 link.href = "https://ai-widget-front.vercel.app/index.css"; // 👈 your CSS file
 shadow.appendChild(link);
 
+// inject dynamic CSS variables
+const color = host.getAttribute("data-color") || "#ca25ae";
+const styleVars = document.createElement("style");
+styleVars.textContent = `:host { --aiw-color: ${color}; }`;
+shadow.appendChild(styleVars);
+
 // create container for React to render inside shadow root
 const container = document.createElement("div");
 shadow.appendChild(container);
@@ -23,7 +29,6 @@ shadow.appendChild(container);
 // read config from host element
 const position = host.getAttribute("data-position") || "bottom-right";
 const agentId = host.getAttribute("data-agent-id") || "";
-const color = host.getAttribute("data-color") || "#ca25ae";
 const text = host.getAttribute("data-text") || "";
 
 // render the widget into the shadow DOM
