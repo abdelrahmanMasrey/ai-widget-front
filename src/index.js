@@ -1,19 +1,39 @@
 import React from "react";
-import axiosInstance from "./api"; 
 import ReactDOM from "react-dom/client";
-import CallWidget from "./callWidget";
+import CallWidget from "./callwidget";
 
-const div = document.querySelector("#ai-voice-widget-root");
+// find or create the widget root
+const host =
+  document.querySelector("#ai-voice-widget-root") ||
+  document.body.appendChild(document.createElement("div"));
 
-if (div) {
-  const position = div.dataset.position || "bottom-right";
-  const agentId = div.dataset.agentId;
+// create shadow DOM
+const shadow = host.attachShadow({ mode: "open" });
 
-  const root = ReactDOM.createRoot(div);
-  root.render(
-    <React.StrictMode>
-      <CallWidget position={position} agentId={agentId} />
-    </React.StrictMode>
-  );
-}
+// inject stylesheet into shadow root
+const link = document.createElement("link");
+link.rel = "stylesheet";
+link.href = "https://ai-widget-front.vercel.app/index.css"; // 👈 your CSS file
+shadow.appendChild(link);
 
+// create container for React to render inside shadow root
+const container = document.createElement("div");
+shadow.appendChild(container);
+
+// read config from host element
+const position = host.getAttribute("data-position") || "bottom-right";
+const agentId = host.getAttribute("data-agent-id") || "";
+const color = host.getAttribute("data-color") || "#ca25ae";
+const text = host.getAttribute("data-text") || "";
+
+// render the widget into the shadow DOM
+ReactDOM.createRoot(container).render(
+  <React.StrictMode>
+    <CallWidget
+      position={position}
+      agentId={agentId}
+      color={color}
+      text={text}
+    />
+  </React.StrictMode>
+);
