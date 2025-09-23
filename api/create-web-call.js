@@ -20,6 +20,8 @@ module.exports = async function (req, res) {
     // allow per-site override; fall back to environment variable
     const agentId = body.agent_id || process.env.RETELL_AGENT_ID;
 
+    console.log(agentId + " from create web call.js");
+
     const response = await axios.post(
       'https://api.retellai.com/v2/create-web-call',
       {

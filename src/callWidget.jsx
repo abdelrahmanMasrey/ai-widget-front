@@ -67,6 +67,7 @@ const startWebCall = async () => {
   setConnecting(true);
 
   try {
+    console.log(agentId + " from start web call");
     const resp = await fetch("/api/create-web-call", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
