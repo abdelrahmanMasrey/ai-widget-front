@@ -203,7 +203,7 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
           aria-label="Toggle AI Assistant"
           style={{ backgroundColor: color }}
         >
-          🤖
+          D
         </button>
       </div>
 
