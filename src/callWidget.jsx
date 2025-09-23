@@ -63,9 +63,8 @@ function WebCallComponent({ onAgentTalking, agentTalking }) {
   }, [onAgentTalking]);
 
 const startWebCall = async () => {
-      console.log(agentId + " from create web call.js");
-    console.log(agentId + " from create web call.js");
-    console.log(agentId + " from create web call.js");
+console.log("agentId", agentId);
+
 
   if (!retellClient || connecting) return;
   setConnecting(true);
