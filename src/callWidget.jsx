@@ -71,8 +71,8 @@ const startWebCall = async () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        agent_id: agentId, // 👈 send the agentId from props
-        metadata: { origin: window.location.origin }, // optional
+        agent_id: agentId,
+        metadata: { origin: window.location.origin }
       }),
     });
 
@@ -96,6 +96,7 @@ const startWebCall = async () => {
     setConnecting(false);
   }
 };
+
 
 
   const stopWebCall = () => {
