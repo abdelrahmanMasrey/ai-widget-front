@@ -63,7 +63,7 @@ function WebCallComponent({ onAgentTalking, agentTalking }) {
   }, [onAgentTalking]);
 
 const startWebCall = async () => {
-console.log("agentId", agentId);
+console.error("agentId", agentId);
 
 
   if (!retellClient || connecting) return;
@@ -203,7 +203,7 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
           aria-label="Toggle AI Assistant"
           style={{ backgroundColor: color }}
         >
-          D
+          🤖
         </button>
       </div>
 

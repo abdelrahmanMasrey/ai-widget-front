@@ -34,6 +34,8 @@ shadow.appendChild(container);
 const position = host.getAttribute("data-position") || "bottom-right";
 const agentId = host.getAttribute("data-agent-id") || "";
 const text = host.getAttribute("data-text") || "";
+console.error("agentId", agentId);
+console.log("agentId", agentId);
 
 // render the widget into the shadow DOM
 ReactDOM.createRoot(container).render(
