@@ -67,7 +67,7 @@ const startWebCall = async () => {
   setConnecting(true);
 
   try {
-    const resp = await fetch("/api/create-web-call", {
+    const resp = await fetch("https://ai-widget-front.vercel.app/api/create-web-call", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
