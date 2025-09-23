@@ -198,7 +198,7 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
           aria-label="Toggle AI Assistant"
           style={{ backgroundColor: color }}
         >
-          🤖
+          <SiriOrb/>
         </button>
       </div>
 
