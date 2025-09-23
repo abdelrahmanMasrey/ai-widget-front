@@ -17,7 +17,7 @@ function SiriOrb({ agentTalking }) {
 /* ===========================
    Web Call Component
    =========================== */
-function WebCallComponent({ onAgentTalking, agentTalking }) {
+function WebCallComponent({ onAgentTalking, agentTalking, agentId, color }) {
   const [retellClient, setRetellClient] = useState(null);
   const [callActive, setCallActive] = useState(false);
   const [connecting, setConnecting] = useState(false);
@@ -63,20 +63,16 @@ function WebCallComponent({ onAgentTalking, agentTalking }) {
   }, [onAgentTalking]);
 
 const startWebCall = async () => {
-console.error("agentId", agentId);
-
-
   if (!retellClient || connecting) return;
   setConnecting(true);
 
   try {
-    console.log(agentId + " from start web call");
     const resp = await fetch("/api/create-web-call", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        agent_id: agentId,
-        metadata: { origin: window.location.origin }
+        agent_id: agentId, // 👈 send the agentId from props
+        metadata: { origin: window.location.origin }, // optional
       }),
     });
 
@@ -100,7 +96,6 @@ console.error("agentId", agentId);
     setConnecting(false);
   }
 };
-
 
 
   const stopWebCall = () => {
@@ -218,7 +213,7 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
           agentTalking={agentTalking}
           agentId={agentId}
           color={color}
-        />
+        />a
       </div>
     </>
   );
