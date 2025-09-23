@@ -213,7 +213,7 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
           agentTalking={agentTalking}
           agentId={agentId}
           color={color}
-        />a
+        />
       </div>
     </>
   );
