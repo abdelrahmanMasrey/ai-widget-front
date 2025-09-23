@@ -17,8 +17,6 @@ link.rel = "stylesheet";
 
 link.href =  process.env.WIDGET_CSS_URL; 
 
-console.log(process.env.WIDGET_CSS_URL);
-
 shadow.appendChild(link);
 
 

@@ -62,36 +62,41 @@ function WebCallComponent({ onAgentTalking, agentTalking }) {
     };
   }, [onAgentTalking]);
 
-  const startWebCall = async () => {
-    if (!retellClient || connecting) return;
-    setConnecting(true);
+const startWebCall = async () => {
+  if (!retellClient || connecting) return;
+  setConnecting(true);
 
-    try {
-      const resp = await fetch(
-        "https://voice-widget-virid.vercel.app/api/create-web-call",
-        { method: "POST" }
-      );
+  try {
+    const resp = await fetch("/api/create-web-call", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        agent_id: agentId, // 👈 send the agentId from props
+        metadata: { origin: window.location.origin }, // optional
+      }),
+    });
 
-      const data = await resp.json();
-      const accessToken = data.access_token;
+    const data = await resp.json();
+    const accessToken = data.access_token;
 
-      if (!accessToken) {
-        console.error("No access token returned:", data);
-        setConnecting(false);
-        return;
-      }
-
-      await retellClient.startCall({
-        accessToken,
-        inputAudioDeviceConfig: { deviceId: "default" },
-        outputAudioDeviceConfig: { deviceId: "default" },
-        sampleRate: 24000,
-      });
-    } catch (err) {
-      console.error("Failed to start call:", err);
+    if (!accessToken) {
+      console.error("No access token returned:", data);
       setConnecting(false);
+      return;
     }
-  };
+
+    await retellClient.startCall({
+      accessToken,
+      inputAudioDeviceConfig: { deviceId: "default" },
+      outputAudioDeviceConfig: { deviceId: "default" },
+      sampleRate: 24000,
+    });
+  } catch (err) {
+    console.error("Failed to start call:", err);
+    setConnecting(false);
+  }
+};
+
 
   const stopWebCall = () => {
     if (retellClient) retellClient.stopCall();
