@@ -209,6 +209,32 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
       </div>
 
       {/* Sliding panel */}
+
+      <div style={panelStyles}>
+
+        {/* Panel Header */}
+        <div className="aiw-panel-header" style={{ backgroundColor: color }}>
+          <span className="aiw-panel-title">{text}</span>
+          <button 
+            className="aiw-header-close" 
+            onClick={() => setIsOpen(false)} 
+            aria-label="Close widget"
+          >
+            ▼
+          </button>
+        </div>
+
+        {/* Panel Content */}
+        <div className="aiw-panel-content">
+          <WebCallComponent
+            onAgentTalking={setAgentTalking}
+            agentTalking={agentTalking}
+            agentId={agentId}
+            color={color}
+          />
+        </div>
+      </div>
+
       <div style={panelStyles}>
         {text && (
           <div style={{ fontFamily: "'Poppins', sans-serif", marginBottom: "8px" }}>{text}</div>
