@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { RetellWebClient } from "retell-client-js-sdk";
 import "./callWidget.css";
+import emoji from "./assets/emoji.png";
+
 
 /* ===========================
    Siri Orb Visualization
@@ -198,7 +200,8 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
           aria-label="Toggle AI Assistant"
           style={{ backgroundColor: color }}
         >
-<img src={"/static/images/emoji.png"} alt="" />
+            <img src={emoji} alt="AI Assistant" style={{ width: "45px", height: "45px" }} />
+            
         </button>
       </div>
 
