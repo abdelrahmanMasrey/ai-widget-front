@@ -200,10 +200,11 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
           style={{ backgroundColor: color }}
         >
 <img
-  src="/aiemoji.png"
+  src="https://ai-widget-front.vercel.app/aiemoji.png"
   alt="AI Assistant"
   style={{ width: "45px", height: "45px" }}
 />
+
         </button>
       </div>
 
