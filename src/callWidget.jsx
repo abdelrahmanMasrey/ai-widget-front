@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { RetellWebClient } from "retell-client-js-sdk";
 import "./callWidget.css";
-import emoji from "./assets/ai-emoji.png";
+import aiemoji from "./assets/aiemoji.png";
 
 
 /* ===========================
@@ -201,7 +201,7 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
           style={{ backgroundColor: color }}
         >
     <img 
-        src={emoji} 
+        src={aiemoji} 
         alt="AI Assistant" 
         style={{ width: "45px", height: "45px" }} 
       />            
