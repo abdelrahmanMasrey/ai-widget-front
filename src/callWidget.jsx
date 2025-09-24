@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { RetellWebClient } from "retell-client-js-sdk";
 import "./callWidget.css";
-import emoji from "./assets/emoji.png";
+import emoji from "./assets/ai-emoji.png";
 
 
 /* ===========================
