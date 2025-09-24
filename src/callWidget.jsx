@@ -182,64 +182,62 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
     boxShadow: "0 12px 48px rgba(0, 0, 0, 0.15)",
     transition: `${isLeft ? "left" : "right"} 0.4s ease`,
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
     flexDirection: "column",
-    padding: "20px",
+    overflow: "hidden", // ✅ ensures header is glued to top
     zIndex: 9998,
   };
 
-  return (
-    <>
-      {/* Floating toggle button */}
-      <div style={positionStyles}>
+
+return (
+  <>
+    {/* Floating toggle button */}
+    <div style={positionStyles}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="aiw-floating-btn"
+        aria-label="Toggle AI Assistant"
+        style={{ backgroundColor: color }}
+      >
+        <img
+          src="https://ai-widget-front.vercel.app/aiemoji.png"
+          alt="AI Assistant"
+          style={{ width: "45px", height: "45px" }}
+        />
+      </button>
+    </div>
+
+    {/* Sliding panel */}
+    <div style={panelStyles}>
+      {/* Panel Header */}
+      <div className="aiw-panel-header" style={{ backgroundColor: color }}>
+        <span className="aiw-panel-title">{text}</span>
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="aiw-floating-btn"
-          aria-label="Toggle AI Assistant"
-          style={{ backgroundColor: color }}
+          className="aiw-header-close"
+          onClick={() => setIsOpen(false)}
+          aria-label="Close widget"
         >
-<img
-  src="https://ai-widget-front.vercel.app/aiemoji.png"
-  alt="AI Assistant"
-  style={{ width: "45px", height: "45px" }}
-/>
+                {/* X (Close) SVG */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
 
         </button>
       </div>
 
-      {/* Sliding panel */}
 
-      <div style={panelStyles}>
-
-        {/* Panel Header */}
-        <div className="aiw-panel-header" style={{ backgroundColor: color }}>
-          <span className="aiw-panel-title">{text}</span>
-          <button 
-            className="aiw-header-close" 
-            onClick={() => setIsOpen(false)} 
-            aria-label="Close widget"
-          >
-            ▼
-          </button>
-        </div>
-
-        {/* Panel Content */}
-        <div className="aiw-panel-content">
-          <WebCallComponent
-            onAgentTalking={setAgentTalking}
-            agentTalking={agentTalking}
-            agentId={agentId}
-            color={color}
-          />
-        </div>
-      </div>
-
-      <div style={panelStyles}>
-        {text && (
-          <div style={{ fontFamily: "'Poppins', sans-serif", marginBottom: "8px" }}>{text}</div>
-        )}
-
+      {/* Panel Content */}
+      <div className="aiw-panel-content">
         <WebCallComponent
           onAgentTalking={setAgentTalking}
           agentTalking={agentTalking}
@@ -247,8 +245,10 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
           color={color}
         />
       </div>
-    </>
-  );
+    </div>
+  </>
+);
+
 }
 
 /* ===========================
