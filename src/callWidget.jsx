@@ -198,7 +198,7 @@ function AICallWidget({ position = "bottom-right", agentId, color, text }) {
           aria-label="Toggle AI Assistant"
           style={{ backgroundColor: color }}
         >
-            <img src="./public/emoji.png" alt="AI Assistant" style={{ width: "45px", height: "45px" }} />
+<img src={"/static/images/emoji.png"} alt="" />
         </button>
       </div>
 
